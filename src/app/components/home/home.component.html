@@ -1,0 +1,82 @@
+<section class="about-page" id="about">
+  <div class="hero-section">
+    <div class="hero-left">
+      <div class="tag-pill">
+        <span class="tag-dot"></span>
+        Développeur freelance · disponible
+      </div>
+      <h1 class="hero-name">Salut, moi c'est <span>Woody</span></h1>
+      <p class="hero-role">
+        Étudiant passionné &amp; créateur de sites qui marquent
+      </p>
+      <p class="hero-desc">
+        Je code des sites web pro pour entrepreneurs et indépendants — avec
+        soin, rapidité et un vrai regard sur le design. Chaque projet est une
+        opportunité de repousser mes limites.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Démarrer un projet</a>
+        <a href="#portfolio" class="btn btn-ghost">Voir le portfolio</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar-circle">W</div>
+        <div class="badge-floating badge-1">
+          <span class="badge-dot green"></span>Angular · TS
+        </div>
+        <div class="badge-floating badge-2">
+          <span class="badge-dot amber"></span>Livraison 10j
+        </div>
+        <div class="badge-floating badge-3">
+          <span class="badge-dot purple"></span>100% custom
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="skills-section">
+    <p class="section-label">Stack technique</p>
+    <div class="skills-grid">
+      <div class="skill-card" *ngFor="let skill of skills">
+        <div class="skill-name">{{ skill.name }}</div>
+        <div class="skill-bar-track">
+          <div
+            class="skill-bar-fill"
+            [style.width]="animateSkills ? skill.level + '%' : '0'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="values-section">
+    <p class="section-label">Ce qui me définit</p>
+    <div class="values-grid">
+      <div class="value-card" *ngFor="let v of values">
+        <div class="value-title">{{ v.title }}</div>
+        <p class="value-desc">{{ v.desc }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-box">
+      <div class="cta-avail">
+        <span class="cta-avail-dot"></span>Disponible pour de nouveaux projets
+      </div>
+      <h2 class="cta-title">Votre prochain site mérite un dev investi</h2>
+      <p class="cta-sub">
+        Devis gratuit sous 24h · Prix adaptés aux petites structures · Code
+        propre et maintenable
+      </p>
+      <a href="#contact" class="btn btn-primary">Demander un devis gratuit</a>
+    </div>
+  </div>
+</section>
