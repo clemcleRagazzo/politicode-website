@@ -29,6 +29,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/politicode-website/",
               "budgets": [
                 {
                   "type": "initial",
