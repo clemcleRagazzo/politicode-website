@@ -1,4 +1,6 @@
-import { Routes } from '@angular/router';
+import { provideRouter, Routes, withHashLocation } from '@angular/router';
+import { AppComponent } from './app.component';
+import { bootstrapApplication } from '@angular/platform-browser';
 
 export const routes: Routes = [
   {
@@ -21,3 +23,6 @@ export const routes: Routes = [
   //       ),
   //   },
 ];
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes, withHashLocation())],
+});
