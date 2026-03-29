@@ -23,6 +23,3 @@ export const routes: Routes = [
   //       ),
   //   },
 ];
-bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes, withHashLocation())],
-});
