@@ -13,11 +13,11 @@ export const routes: Routes = [
         (m) => m.AboutComponent,
       ),
   },
-  //   {
-  //     path: '**',
-  //     loadComponent: () =>
-  //       import('./components/error/error.component').then(
-  //         (m) => m.ErrorComponent
-  //       ),
-  //   },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./components/not-found/not-found.component').then(
+        (m) => m.NotFoundComponent,
+      ),
+  },
 ];

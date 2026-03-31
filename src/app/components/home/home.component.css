@@ -70,7 +70,7 @@
   gap: 8px;
   font-size: 12px;
   font-weight: 500;
-  color: #1a6ef5;
+  color: #197f47;
   background: #e8f0fe;
   padding: 5px 14px;
   border-radius: 100px;
@@ -82,7 +82,7 @@
 .tag-dot {
   width: 6px;
   height: 6px;
-  background: #1a6ef5;
+  background: #197f47;
   border-radius: 50%;
   animation: breathe 2s infinite;
 }
@@ -116,6 +116,7 @@
   color: #6b7280;
   margin-bottom: 36px;
   opacity: 0;
+  text-align: justify;
   animation: fadeUp 0.55s 0.4s forwards;
 }
 
@@ -242,7 +243,7 @@
 }
 .badge-3 {
   top: 50%;
-  right: -40px;
+  right: -100px;
   animation-delay: 0.8s;
 }
 
@@ -364,6 +365,7 @@
   line-height: 1.65;
   color: #6b7280;
   margin: 0;
+  text-align: justify;
 }
 
 /* ── CTA ── */
