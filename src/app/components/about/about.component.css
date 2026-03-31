@@ -47,61 +47,6 @@
 }
 
 /* ══════════════════════════
-   NAVBAR
-══════════════════════════ */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e4e7ec;
-}
-
-.nav-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-logo {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #1a6ef5;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-links a {
-  font-size: 14px;
-  color: #6b7280;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: #1a6ef5;
-}
-
-/* ══════════════════════════
    HERO
 ══════════════════════════ */
 .hero {

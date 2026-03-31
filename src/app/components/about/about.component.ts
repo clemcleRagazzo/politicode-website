@@ -38,4 +38,8 @@ export class AboutComponent {
   triggerPhotoInput(): void {
     document.getElementById('photoInput')?.click();
   }
+
+  protected backHomePage(): void {
+    window.location.href = '/';
+  }
 }

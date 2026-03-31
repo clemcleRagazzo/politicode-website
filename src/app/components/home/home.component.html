@@ -61,10 +61,12 @@
   <div class="values-section">
     <p class="section-label">Ce qui me définit</p>
     <div class="values-grid">
-      <div class="value-card" *ngFor="let v of profile.values">
-        <div class="value-title">{{ v.title }}</div>
-        <p class="value-desc">{{ v.desc }}</p>
-      </div>
+      @for (v of profile.values; track v) {
+        <div class="value-card">
+          <div class="value-title">{{ v.title }}</div>
+          <p class="value-desc">{{ v.desc }}</p>
+        </div>
+      }
     </div>
   </div>
 
@@ -76,10 +78,9 @@
       </div>
       <h2 class="cta-title">Votre prochain site mérite un dev investi</h2>
       <p class="cta-sub">
-        Devis gratuit sous 24h · Prix adaptés aux petites structures · Code
-        propre et maintenable
+        Projet conçu de manière évolutive · Code propre et maintenable
       </p>
-      <a href="#contact" class="btn btn-primary">Demander un devis gratuit</a>
+      <a href="/devis/form" class="btn btn-primary">Prendre contact</a>
     </div>
   </div>
 </section>

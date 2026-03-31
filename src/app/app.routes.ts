@@ -14,6 +14,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'devis/form',
+    loadComponent: () =>
+      import('./components/devis/devis-form/devis-form.component').then(
+        (m) => m.DevisFormComponent,
+      ),
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./components/not-found/not-found.component').then(
