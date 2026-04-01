@@ -1,34 +1,112 @@
-<div class="hero">
-  <div class="hero-deco hero-deco-1"></div>
-  <div class="hero-deco hero-deco-2"></div>
+<div class="nf-page">
+  <!-- ══ PLUIE DE SKILLS ══ -->
+  <div class="skills-rain" aria-hidden="true">
+    @for (skill of profile.skills; track skill; let i = $index) {
+      <span
+        class="rain-skill"
+        [style.left]="getSkillLeft(i)"
+        [style.animation-delay]="getSkillDelay(i)"
+        [style.animation-duration]="getSkillDuration(i)"
+        >{{ skill.name }}</span
+      >
+    }
+  </div>
 
-  <div class="hero-inner error-layout">
-    <!-- GROS 404 -->
-    <div class="error-visual">
-      <span class="digit">4</span>
-      <span class="digit zero">0</span>
-      <span class="digit">4</span>
+  <!-- ══ CONTENU CENTRAL ══ -->
+  <div class="nf-center">
+    <!-- Gros 404 -->
+    <div class="nf-glitch-wrap" aria-hidden="true">
+      <span class="nf-404" data-text="404">404</span>
     </div>
 
-    <div class="hero-info">
-      <div class="hero-badge">Page introuvable</div>
+    <!-- Badge -->
+    <div class="nf-badge">
+      <span class="nf-badge-dot"></span>
+      Page introuvable
+    </div>
 
-      <h1>Tu t’es <strong>perdu</strong></h1>
+    <h1 class="nf-title">
+      Oups, vous vous êtes<br />
+      <strong>perdu.</strong>
+    </h1>
 
-      <p class="hero-title">Cette page n’existe pas… ou plus.</p>
+    <p class="nf-sub">Cette page n'existe pas (ou plus).<br /></p>
 
-      <p class="hero-bio">
-        Le lien est peut-être cassé, ou la page a été déplacée. Dans tous les
-        cas, t’es au mauvais endroit.
-      </p>
-
-      <div class="hero-actions">
-        <button class="btn btn-primary" (click)="goHome()">
-          Retour accueil
-        </button>
-
-        <button class="btn btn-outline" (click)="goBack()">Revenir</button>
+    <!-- Compte à rebours -->
+    <!-- <div class="nf-countdown">
+      <div class="countdown-ring">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle
+            cx="32"
+            cy="32"
+            r="28"
+            fill="none"
+            stroke="#e4e7ec"
+            stroke-width="4"
+          />
+          <circle
+            cx="32"
+            cy="32"
+            r="28"
+            fill="none"
+            stroke="#1a6ef5"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-dasharray="175.9"
+            [style.stroke-dashoffset]="(1 - countdown / 10) * 175.9"
+            transform="rotate(-90 32 32)"
+            style="transition: stroke-dashoffset 1s linear"
+          />
+        </svg>
+        <span class="countdown-number">{{ countdown }}</span>
       </div>
+      <p class="countdown-label">
+        Redirection automatique dans {{ countdown }}s
+      </p>
+    </div> -->
+
+    <!-- Actions -->
+    <div class="nf-actions">
+      <button class="btn btn-primary" (click)="goHome()">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            d="M3 10.5L12 3L21 10.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V10.5Z"
+          />
+        </svg>
+        Retour à l'accueil
+      </button>
+      <button class="btn btn-outline" (click)="goHome()">
+        Voir mes projets
+      </button>
     </div>
   </div>
+
+  <!-- ══ TERMINAL ══ -->
+  <div class="nf-terminal">
+    <div class="terminal-bar">
+      <span class="t-dot t-red"></span>
+      <span class="t-dot t-yellow"></span>
+      <span class="t-dot t-green"></span>
+      <span class="terminal-title">bash — portfolio</span>
+    </div>
+    <div class="terminal-body">
+      @for (line of visibleLines; track line) {
+        <p class="terminal-line" [class.line-error]="line.includes('ERREUR')">
+          {{ line }}
+        </p>
+      }
+      <span class="terminal-cursor">█</span>
+    </div>
+  </div>
+
+  <!-- Décorations hero (mêmes que la page d'accueil) -->
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
 </div>

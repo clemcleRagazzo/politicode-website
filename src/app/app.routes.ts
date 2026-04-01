@@ -1,4 +1,4 @@
-import { provideRouter, Routes, withHashLocation } from '@angular/router';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -18,6 +18,20 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/devis/devis-form/devis-form.component').then(
         (m) => m.DevisFormComponent,
+      ),
+  },
+  {
+    path: 'projects',
+    loadComponent: () =>
+      import('./components/projects/projects.component').then(
+        (m) => m.ProjectsComponent,
+      ),
+  },
+  {
+    path: 'projects/:name',
+    loadComponent: () =>
+      import('./components/projects/project-detail/project-detail.component').then(
+        (m) => m.ProjectDetailComponent,
       ),
   },
   {
