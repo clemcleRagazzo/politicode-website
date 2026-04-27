@@ -1,0 +1,127 @@
+<div class="mt-page">
+  <!-- ══ ORBITE DE SKILLS ══ -->
+  <div class="orbit-wrap" aria-hidden="true">
+    <div class="orbit-ring orbit-ring-1"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+    <div class="orbit-center">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#1a6ef5"
+        stroke-width="1.5"
+      >
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    </div>
+    <div class="orbit-skill">
+      <span class="orbit-chip">{{ selectedSkill }}</span>
+    </div>
+  </div>
+
+  <!-- ══ CONTENU CENTRAL ══ -->
+  <div class="mt-center">
+    <!-- Badge -->
+    <div class="mt-badge">
+      <span class="mt-badge-dot"></span>
+      Maintenance en cours
+    </div>
+
+    <h1 class="mt-title">
+      On améliore<br />
+      <strong>votre expérience.</strong>
+    </h1>
+
+    <p class="mt-sub">
+      Cette page n'a pas encore été créé ou est indisponible.<br />
+      Je déploie une nouvelle version — plus rapide, plus propre. Pour vous.
+    </p>
+
+    <!-- Compte à rebours estimé -->
+    <div class="mt-timer">
+      <div class="timer-block">
+        <span class="timer-value">{{ minutes }}</span>
+        <span class="timer-label">min</span>
+      </div>
+      <span class="timer-sep">:</span>
+      <div class="timer-block">
+        <span class="timer-value">{{ seconds }}</span>
+        <span class="timer-label">sec</span>
+      </div>
+    </div>
+
+    <!-- Barre de progression -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span class="progress-label">Déploiement en cours</span>
+        <span class="progress-pct">{{ progress.toFixed(0) }}%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" [style.width.%]="progress">
+          <div class="progress-shimmer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Liste de tâches -->
+    <div class="tasks-list">
+      @for (task of tasks; track task.label) {
+        <div
+          class="task-item"
+          [class.task-done]="task.done"
+          [class.task-active]="task.active"
+        >
+          <div class="task-icon">
+            @if (task.done) {
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            } @else if (task.active) {
+              <div class="task-spinner"></div>
+            } @else {
+              <div class="task-dot-idle"></div>
+            }
+          </div>
+          <span class="task-label">{{ task.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- ══ TERMINAL ══ -->
+  <div class="mt-terminal">
+    <div class="terminal-bar">
+      <span class="t-dot t-red"></span>
+      <span class="t-dot t-yellow"></span>
+      <span class="t-dot t-green"></span>
+      <span class="terminal-title">deploy.sh — production</span>
+    </div>
+    <div class="terminal-body">
+      @for (log of logs; track log.text) {
+        <p
+          class="terminal-line"
+          [class.log-success]="log.type === 'success'"
+          [class.log-warn]="log.type === 'warn'"
+          [class.log-error]="log.type === 'error'"
+        >
+          {{ log.text }}
+        </p>
+      }
+      <span class="terminal-cursor">█</span>
+    </div>
+  </div>
+
+  <!-- Décos -->
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
+</div>

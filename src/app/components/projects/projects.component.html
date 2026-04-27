@@ -1,0 +1,266 @@
+<section class="section">
+  <div class="container">
+    <!-- Header -->
+    <div class="page-header">
+      <h2 class="section-title">
+        <span class="section-icon">⚡</span>
+        Mes projets
+      </h2>
+      <p class="page-subtitle">
+        Une sélection de projets réalisés à titre personnel ou professionnel.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    @if (filters.length > 1) {
+      <div class="filters">
+        @for (f of filters; track f) {
+          <button
+            class="filter-btn"
+            [class.active]="activeFilter === f"
+            (click)="setFilter(f)"
+          >
+            {{ f === "all" ? "Tous" : f }}
+          </button>
+        }
+      </div>
+    }
+
+    <!-- Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects; track project) {
+        <div class="project-card" (click)="openModal(project)">
+          <!-- Card top bar -->
+          <div class="card-topbar">
+            <div class="project-logo-wrap">
+              @if (project.logo) {
+                <img
+                  [src]="project.logo"
+                  [alt]="project.name"
+                  class="project-logo-img"
+                />
+              }
+              @if (!project.logo) {
+                <span class="project-logo-fallback">
+                  {{ project.name.charAt(0) }}
+                </span>
+              }
+            </div>
+            <span class="status-badge" [class]="getStatusClass(project.status)">
+              <span class="status-dot"></span>
+              {{ project.status }}
+            </span>
+          </div>
+
+          <!-- Card body -->
+          <div class="card-body">
+            <div class="project-header">
+              <h3 class="project-name">{{ project.name }}</h3>
+              @if (project.link) {
+                <a
+                  class="project-link"
+                  (click)="openLink(project.link, $event)"
+                  title="Voir le projet"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
+              }
+            </div>
+            <p class="project-desc">{{ project.description }}</p>
+          </div>
+
+          <!-- Thumbnail strip -->
+          @if (project.photos && project.photos.length > 0) {
+            <div class="photo-strip">
+              @for (
+                photo of project.photos.slice(0, 3);
+                track photo;
+                let i = $index
+              ) {
+                <img
+                  [src]="photo"
+                  [alt]="project.name + ' photo ' + (i + 1)"
+                  class="strip-photo"
+                />
+              }
+              @if (project.photos.length > 3) {
+                <div class="strip-more">+{{ project.photos.length - 3 }}</div>
+              }
+            </div>
+          }
+
+          <!-- Tags -->
+          <div class="project-tags">
+            @for (tech of project.technologies; track tech) {
+              <span class="tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+    <!-- Empty state -->
+    @if (filteredProjects.length === 0) {
+      <div class="empty-state">
+        <p>Aucun projet pour ce filtre.</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Modal -->
+@if (selectedProject) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <!-- Modal header -->
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <div class="project-logo-wrap large">
+            @if (selectedProject.logo) {
+              <img
+                [src]="selectedProject.logo"
+                [alt]="selectedProject.name"
+                class="project-logo-img"
+              />
+            }
+            @if (!selectedProject.logo) {
+              <span class="project-logo-fallback">
+                {{ selectedProject.name.charAt(0) }}
+              </span>
+            }
+          </div>
+          <div>
+            <h2 class="modal-name">{{ selectedProject.name }}</h2>
+            <span
+              class="status-badge"
+              [class]="getStatusClass(selectedProject.status)"
+            >
+              <span class="status-dot"></span>
+              {{ selectedProject.status }}
+            </span>
+          </div>
+        </div>
+        <button class="close-btn" (click)="closeModal()">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Carousel -->
+      @if (selectedProject.photos && selectedProject.photos.length > 0) {
+        <div class="carousel">
+          <div class="carousel-track">
+            <img
+              [src]="selectedProject.photos[selectedPhotoIndex]"
+              [alt]="selectedProject.name"
+              class="carousel-img"
+            />
+          </div>
+          @if (selectedProject.photos.length > 1) {
+            <button class="carousel-btn prev" (click)="prevPhoto()">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            @if (selectedProject.photos.length > 1) {
+              <button class="carousel-btn next" (click)="nextPhoto()">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            }
+          }
+          @if (selectedProject.photos.length > 1) {
+            <div class="carousel-dots">
+              @for (p of selectedProject.photos; track p; let i = $index) {
+                <span
+                  class="carousel-dot"
+                  [class.active]="i === selectedPhotoIndex"
+                  (click)="setPhoto(i)"
+                >
+                </span>
+              }
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p class="modal-desc">{{ selectedProject.description }}</p>
+
+        <div class="modal-section">
+          <p class="subsection-title">Technologies</p>
+          <div class="project-tags">
+            @for (tech of selectedProject.technologies; track tech) {
+              <span class="tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+
+        @if (selectedProject.link) {
+          <div class="modal-actions">
+            <a
+              class="btn btn-primary"
+              (click)="openLink(selectedProject.link!, $event)"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Voir le projet
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

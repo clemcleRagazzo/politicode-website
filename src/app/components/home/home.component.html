@@ -6,10 +6,10 @@
         Développeur freelance · {{ profile.getStatusStr() }}
       </div>
       <h1 class="hero-name">
-        Salut, moi c'est <span>{{ profile.firstName }}</span>
+        Bienvenu sur <span>{{ profile.company!.name }}</span>
       </h1>
       <p class="hero-role">
-        {{ profile.slogan }}
+        {{ profile.company!.slogan }}
       </p>
       <p class="hero-desc">
         {{ profile.bio }}

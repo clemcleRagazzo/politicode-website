@@ -1,17 +1,91 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M3 10.5L12 3L21 10.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V10.5Z"
-          fill="#1a6ef5"
+    <!-- Gauche : maison + nom entreprise -->
+    <div class="nav-left">
+      <a href="">
+        <h1>{{ profile.company!.name }}</h1>
+      </a>
+      <a href="">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M3 10.5L12 3L21 10.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V10.5Z"
+            fill="#1a6ef5"
+            stroke="#1158cc"
+            stroke-width="1.2"
+            stroke-linejoin="round"
+          />
+          <rect x="9" y="15" width="6" height="6" rx="1" fill="#e8f0fe" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Droite : contacts -->
+    <div class="nav-right">
+      <a [href]="'mailto:' + profile.email" class="nav-icon-link del">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
           stroke="#1158cc"
+          stroke-width="1.5"
+        >
+          <path
+            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            fill="none"
+            stroke="#1158cc"
+          />
+          <polyline points="22,6 12,13 2,6" stroke="#1158cc" />
+        </svg>
+      </a>
+      <a [href]="'tel:' + profile.phone" class="nav-icon-link">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
           stroke-width="1.2"
+          stroke-linecap="round"
           stroke-linejoin="round"
-        />
-        <rect x="9" y="15" width="6" height="6" rx="1" fill="#e8f0fe" />
-      </svg>
-    </a>
+        >
+          <path
+            fill="none"
+            stroke="#1158cc"
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+          />
+        </svg>
+      </a>
+      <a [href]="profile.linkedin" target="_blank" class="nav-icon-link del">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path
+            fill="none"
+            stroke="#1158cc"
+            stroke-width="1.2"
+            stroke-linejoin="round"
+            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+          />
+          <rect
+            x="2"
+            y="9"
+            width="4"
+            height="12"
+            fill="none"
+            stroke="#1158cc"
+            stroke-width="1.2"
+            rx="0.5"
+          />
+          <circle
+            cx="4"
+            cy="4"
+            r="2"
+            fill="none"
+            stroke="#1158cc"
+            stroke-width="1.2"
+          />
+        </svg>
+      </a>
+    </div>
   </div>
 </nav>
+<div class="fake-container"></div>

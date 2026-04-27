@@ -2,19 +2,22 @@ export class Profile {
   firstName: string = '';
   lastName: string = '';
   age: string = '';
-  slogan: string = '';
   status: boolean = true;
   title: string = '';
   bio: string = '';
   email: string = '';
+  phone: string = '';
   linkedin: string = '';
   photo: string = '';
+
   education: Education[] = [];
   experiences: Experience[] = [];
   projects: Project[] = [];
   skills: Skill[] = [];
   interests: string[] = [];
   values: Values[] = [];
+
+  company?: Company | null = null;
 
   constructor(init?: Partial<Profile>) {
     Object.assign(this, init);
@@ -23,6 +26,14 @@ export class Profile {
   public getStatusStr(): string {
     return this.status ? 'Disponible' : 'Non-disponible';
   }
+}
+
+export interface Company {
+  name: string;
+  slogan: string;
+  siren: string;
+  siret: string;
+  logo: string;
 }
 
 export interface Values {
@@ -64,11 +75,11 @@ export const profile = new Profile({
   firstName: 'Clément',
   lastName: 'MOULIS',
   age: '21',
-  slogan: 'Étudiant passionné & créateur de sites qui marquent',
   status: true,
   title: 'Développeur Full-Stack',
   bio: 'Passionné par le développement web et les nouvelles technologies, je crée des solutions digitales sur mesure pour accompagner les entreprises dans leur transformation numérique et les moderniser.',
   email: 'moulisclement.pro@gmail.com',
+  phone: '+33 6.47.61.20.22',
   linkedin: 'https://linkedin.com/in/clément-moulis',
   photo: 'clement-moulis-photo.png',
   education: [
@@ -183,4 +194,11 @@ export const profile = new Profile({
       desc: "Le code c'est plus qu'un métier — c'est ce que je fais le soir par plaisir. Cette énergie se ressent dans chaque projet.",
     },
   ],
+  company: {
+    name: 'Politicode',
+    slogan: 'Étudiant passionné & créateur de sites qui marquent',
+    siren: '990580201',
+    siret: '99058020100012',
+    logo: 'politicode.png',
+  },
 });

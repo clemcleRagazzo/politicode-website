@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { profile, Profile, Skill } from '../../models/profile';
+import { profile, Profile, Project, Skill } from '../../models/profile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -9,6 +10,8 @@ import { profile, Profile, Skill } from '../../models/profile';
 })
 export class AboutComponent {
   profile: Profile = profile;
+
+  constructor(private router: Router) {}
 
   get skillCategories(): string[] {
     return [...new Set(this.profile.skills.map((s) => s.category))];
@@ -41,5 +44,9 @@ export class AboutComponent {
 
   protected backHomePage(): void {
     window.location.href = '/';
+  }
+
+  goToProjectDetail(project: Project): void {
+    this.router.navigate(['/projects', project.name]);
   }
 }

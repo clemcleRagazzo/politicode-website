@@ -21,6 +21,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'maintenance',
+    loadComponent: () =>
+      import('./components/maintenance/maintenance.component').then(
+        (m) => m.MaintenanceComponent,
+      ),
+  },
+  {
     path: 'projects',
     loadComponent: () =>
       import('./components/projects/projects.component').then(
