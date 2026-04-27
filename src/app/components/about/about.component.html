@@ -181,7 +181,8 @@
     </h2>
     <div class="projects-grid">
       @for (project of profile.projects; track project) {
-        <div class="project-card" (click)="goToProjectDetail(project)">
+        <div class="project-card">
+          <!-- (click)="goToProjectDetail(project)" -->
           <div class="project-header">
             <div class="project-name">{{ project.name }}</div>
             @if (project.link) {
