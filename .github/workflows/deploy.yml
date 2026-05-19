@@ -64,8 +64,8 @@ jobs:
       - name: Deploy via FTP to O2Switch
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.ton-domaine.com
+          server: argent.o2switch.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/nom-de-ton-app/browser/
+          local-dir: dist/politicode/browser/
           server-dir: /public_html/
