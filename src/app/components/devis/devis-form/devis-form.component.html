@@ -1,5 +1,4 @@
 <div class="devis-page">
-  <!-- ══ FORMULAIRE ══ -->
   <section class="devis-section">
     <div class="devis-container">
       <div class="devis-header">
@@ -10,7 +9,6 @@
         </p>
       </div>
 
-      <!-- Confirmation envoi -->
       @if (mailSent) {
         <div class="success-box">
           <div class="success-icon">
@@ -43,7 +41,6 @@
           novalidate
           class="devis-form"
         >
-          <!-- Ligne nom / prénom -->
           <div class="form-row">
             <div class="form-field" [class.field-error]="isInvalid('lastName')">
               <label class="form-label">
@@ -79,7 +76,6 @@
             </div>
           </div>
 
-          <!-- Profession -->
           <label class="form-label">
             Profession <span class="required">* </span>
           </label>
@@ -93,7 +89,6 @@
             <span class="error-msg">{{ getError("job") }}</span>
           }
 
-          <!-- Ligne email / téléphone -->
           <div class="form-field" [class.field-error]="isInvalid('mail')">
             <label class="form-label"
               >Email <span class="required">*</span></label
@@ -127,7 +122,6 @@
             }
           </div>
 
-          <!-- Project name -->
           <div
             class="form-field"
             [class.field-error]="isInvalid('projectName')"
@@ -143,7 +137,6 @@
             }
           </div>
 
-          <!-- Description -->
           <div
             class="form-field"
             [class.field-error]="isInvalid('description')"
@@ -164,7 +157,6 @@
             }
           </div>
 
-          <!-- Délai -->
           <div class="form-field" [class.field-error]="isInvalid('delay')">
             <label class="form-label"
               >Délai souhaité <span class="optional">(en jours)</span></label
@@ -182,7 +174,6 @@
             }
           </div>
 
-          <!-- Bouton -->
           <div class="form-actions">
             <button
               type="submit"
@@ -209,7 +200,6 @@
     </div>
   </section>
 
-  <!-- ══ PRÉVISUALISATION DU MAIL ══ -->
   @if (!mailSent) {
     <section class="mail-section">
       <div class="devis-container">
