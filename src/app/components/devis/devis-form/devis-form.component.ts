@@ -73,7 +73,7 @@ export class DevisFormComponent implements OnInit {
     this.submitted = true;
     if (this.devisForm.invalid) return;
 
-    this.sendMail();
+    // this.sendMail();
     this.sendForm();
 
     this.mailSent = true;
