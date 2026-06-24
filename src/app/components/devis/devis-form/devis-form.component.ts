@@ -6,11 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { profile, Profile } from '../../../models/profile';
-import { UpperCasePipe } from '@angular/common';
+import { CommonModule, UpperCasePipe } from '@angular/common';
+import { DevisService } from '../../../services/devis.service';
 
 @Component({
   selector: 'app-devis-form',
-  imports: [ReactiveFormsModule, UpperCasePipe],
+  imports: [ReactiveFormsModule, UpperCasePipe, CommonModule],
   templateUrl: './devis-form.component.html',
   styleUrl: './devis-form.component.css',
 })
@@ -19,7 +20,16 @@ export class DevisFormComponent implements OnInit {
   profile: Profile = profile;
   submitted = false;
   mailSent = false;
-  constructor(private fb: FormBuilder) {}
+
+  success = false;
+  loading = false;
+  erreur = '';
+
+  constructor(
+    private fb: FormBuilder,
+    private devisService: DevisService,
+  ) {}
+
   ngOnInit(): void {
     this.devisForm = this.fb.group({
       lastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -63,8 +73,8 @@ export class DevisFormComponent implements OnInit {
     this.submitted = true;
     if (this.devisForm.invalid) return;
 
-    this.sendMail();
-    this.sendToFormSpee();
+    // this.sendMail();
+    this.sendForm();
 
     this.mailSent = true;
   }
@@ -97,26 +107,24 @@ export class DevisFormComponent implements OnInit {
     window.open(mailto, '_blank');
   }
 
-  private sendToFormSpee(): void {
-    fetch('https://formspree.io/f/xdapzgyn', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+  private sendForm(): void {
+    if (this.devisForm.invalid) return;
+
+    this.loading = true;
+    this.erreur = '';
+
+    this.devisService.envoyerDevis(this.devisForm.value).subscribe({
+      next: () => {
+        this.success = true;
+        this.loading = false;
+        this.devisForm.reset();
       },
-      body: JSON.stringify(this.devisForm.value),
-    })
-      .then((response) => {
-        if (response.ok) {
-          alert('Devis envoyé !');
-          this.devisForm.reset();
-        } else {
-          alert("Erreur lors de l'envoi");
-        }
-      })
-      .catch(() => {
-        alert('Erreur réseau');
-      });
+      error: (err) => {
+        this.erreur = 'Une erreur est survenue, réessaie.';
+        this.loading = false;
+        console.error(err);
+      },
+    });
   }
 
   reset(): void {
