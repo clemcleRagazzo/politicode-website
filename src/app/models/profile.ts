@@ -123,6 +123,30 @@ export const profile = new Profile({
   ],
   projects: [
     {
+      name: 'MaMusique',
+      description:
+        'Application de musiques propriétaire qui lie vos fichiers .mp3',
+      status: 'En cours',
+      technologies: ['Compose', 'Kotlin', 'SQLite'],
+      link: '',
+      photos: [],
+      logo: '',
+    },
+    {
+      name: 'MaMémoire',
+      description:
+        'Jeu mobile où vous recevez une notification avec un numéro à 8h, et devez restituer ce numéro à 18h',
+      status: 'En cours',
+      technologies: ['Compose', 'Kotlin'],
+      link: '',
+      photos: [
+        'ma-memoire/ma-memoire-1.jpeg',
+        'ma-memoire/ma-memoire-2.jpeg',
+        'ma-memoire/ma-memoire-3.jpeg',
+      ],
+      logo: '',
+    },
+    {
       name: 'Ce sera moi',
       description:
         'Jeu vidéo où le but est de se faire élire aux élections présidentielles françaises',
@@ -157,7 +181,7 @@ export const profile = new Profile({
         "Création d'un formulaire sur un site internet afin de créer le meilleur prompt pour une Intelligence Artificielle générative",
       technologies: ['HTML', 'CSS', 'JavaScript'],
       status: 'Terminé',
-      link: '',
+      link: 'http://promptique.politi-code.fr/documentations.html',
       photos: [],
       logo: '',
     },

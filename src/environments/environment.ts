@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://politi-code.fr';
+  apiUrl: 'https://backend.politi-code.fr',
 };
